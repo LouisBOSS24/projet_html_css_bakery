@@ -1,99 +1,128 @@
+/* =========================================
+   Reset et styles de base
+   On supprime les marges et paddings par défaut
+========================================= */
 body {
     margin: 0;
     padding: 0;
 }
 
+/* =========================================
+   Header / bandeau de navigation
+========================================= */
 .bandeau {
-    display: flex;
-    align-items: center;
-    height: 50px;
-    position: fixed;
+    display: flex; /* Affichage en flex pour aligner les éléments horizontalement */
+    align-items: center; /* Centre verticalement les éléments */
+    height: 50px; /* Hauteur du bandeau */
+    position: fixed; /* Fixe le bandeau en haut de la page */
     top: 0;
-    width: 100%;
-    background-color: white;
+    width: 100%; /* Prend toute la largeur de la page */
+    background-color: white; /* Fond blanc */
 }
 
 .bandeau img {
-    width: 35px;
-    height: 40px;
-    padding-left: 20px;
-    padding-top: 5px;
+    width: 35px; /* Largeur du logo */
+    height: 40px; /* Hauteur du logo */
+    padding-left: 20px; /* Décalage à gauche */
+    padding-top: 5px; /* Décalage en haut */
 }
 
+/* Toggle burger menu pour mobile */
 .menu-toggle {
-    display: none;
+    display: none; /* On cache la checkbox */
 }
 
+/* Burger icon pour mobile */
 .burger {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 25px;
-    height: 20px;
-    margin-left: auto;
+    flex-direction: column; /* Les barres sont verticales */
+    justify-content: space-between; /* Espacement entre les barres */
+    width: 25px; /* Largeur du burger */
+    height: 20px; /* Hauteur du burger */
+    margin-left: auto; /* Pousse le burger à droite */
     margin-right: 20px;
-    cursor: pointer;
-    z-index: 1001;
+    cursor: pointer; /* Curseur en pointer */
+    z-index: 1001; /* Toujours au-dessus */
 }
 
 .burger span {
-    display: block;
-    height: 3px;
-    width: 100%;
-    background-color: black;
-    border-radius: 2px;
-    transition: all 0.3s ease;
+    display: block; /* Chaque barre est un bloc */
+    height: 3px; /* Hauteur de chaque barre */
+    width: 100%; /* Barre pleine largeur */
+    background-color: black; /* Couleur noire */
+    border-radius: 2px; /* Coins arrondis */
+    transition: all 0.3s ease; /* Animation douce pour transformation */
 }
 
+/* Menu mobile caché par défaut */
 .menu {
-    position: fixed;
-    top: -100%;
+    position: fixed; /* Position fixe pour animation */
+    top: -100%; /* Hors écran */
     left: 0;
     width: 100%;
-    height: 0;
-    background-color: white;
-    flex-direction: column;
-    align-items: center;
+    height: 0; /* Pas visible */
+    background-color: white; /* Fond blanc */
+    flex-direction: column; /* Éléments empilés */
+    align-items: center; /* Centré horizontalement */
     justify-content: start;
-    gap: 30px;
+    gap: 30px; /* Espacement entre liens */
     padding-top: 40px;
-    opacity: 0;
-    display: flex;
+    transition: top 0.4s ease, height 0.4s ease, opacity 0.3s ease; /* Animation d’apparition */
+    opacity: 0; /* Invisible */
+    display: flex; /* Flexbox */
 }
 
 .menu a {
-    text-decoration: none;
-    color: #E9BD8C;
+    text-decoration: none; /* Pas de soulignement */
+    color: #E9BD8C; /* Couleur beige clair */
     font-family: "Poppins", sans-serif;
-    font-weight: 600;
+    font-weight: 600; /* Semi-bold */
     font-size: 14px;
 }
 
+/* Animation burger quand le menu est ouvert */
+.menu-toggle:checked + .burger span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg); /* Première barre tourne et descend */
+}
+
+.menu-toggle:checked + .burger span:nth-child(2) {
+    opacity: 0; /* Barre du milieu disparaît */
+}
+
+.menu-toggle:checked + .burger span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg); /* Dernière barre tourne et monte */
+}
+
+/* Affichage du menu quand coché */
 .menu-toggle:checked ~ .menu {
-    top: 50px;
-    height: 200px;
-    opacity: 1;
+    top: 50px; /* Descend sous le bandeau */
+    height: 200px; /* Hauteur visible */
+    opacity: 1; /* Devient visible */
 }
 
+/* =========================================
+   Main / contenu principal
+========================================= */
 main {
-    margin-top: 50px;
+    margin-top: 50px; /* Décalage pour ne pas cacher le bandeau */
 }
 
+/* Section hero / Douceurs & Saveurs */
 .ds {
-    background-image: url(asset/photoS&D.svg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 254px;
+    background-image: url(asset/photoS&D.svg); /* Image de fond */
+    background-size: cover; /* Couvre toute la section */
+    background-position: center; /* Centré */
+    background-repeat: no-repeat; /* Pas de répétition */
+    height: 254px; /* Hauteur initiale */
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Contenu en colonne */
 }
 
 .ds h1 {
     font-family: "Sansita Swashed", system-ui;
-    font-size: 26px;
+    font-size: 26px; /* Taille titre */
     font-weight: 400;
-    color: white;
+    color: white; /* Texte blanc */
     margin: 0;
     margin-left: 21px;
     margin-top: 5px;
@@ -103,18 +132,19 @@ main {
     font-family: "Inter", sans-serif;
     font-size: 14px;
     font-weight: 600;
-    color: #E9BD8C;
+    color: #E9BD8C; /* Couleur beige clair */
     margin-left: 21px;
-    margin-top: 80px;
+    margin-top: 80px; /* Décalage depuis le haut */
     margin-bottom: 0px;
 }
 
+/* Bouton "Commander" */
 .link-ds a {
-    background-color: #933C24;
-    border-radius: 8px;
+    background-color: #933C24; /* Fond brun rouge */
+    border-radius: 8px; /* Coins arrondis */
     display: inline-block;
     padding: 5px 4px;
-    border: 1px solid black;
+    border: 1px solid black; /* Bordure noire */
     font-family: "Inter", sans-serif;
     font-size: 16px;
     font-weight: 600;
@@ -122,8 +152,15 @@ main {
     color: white;
     margin-left: 21px;
     margin-top: 10px;
+    transition: transform 0.3s ease;
 }
 
+.link-ds a:hover {
+    transform: scale(1.08); /* Zoom léger au survol */
+    background-color: #6f2e1c; /* Couleur plus foncée */
+}
+
+/* Section produits */
 .products {
     display: flex;
     flex-direction: column;
@@ -144,12 +181,17 @@ main h3 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-image: url(asset/topproducts.svg);
+    background-image: url(asset/topproducts.svg); /* Fond produit */
     background-size: cover;
-    border-radius: 8px;
+    border-radius: 8px; /* Coins arrondis */
     width: 360px;
     height: 300px;
     margin-top: 30px;
+    transition: transform 0.5s ease; /* Animation hover */
+}
+
+.product:hover {
+    transform: scale(1.04); /* Zoom léger au survol */
 }
 
 .product img {
@@ -157,6 +199,7 @@ main h3 {
     margin-bottom: 0px;
 }
 
+/* Section commander produit */
 .commander {
     display: flex;
     flex-direction: row;
@@ -176,7 +219,6 @@ main h3 {
     margin-top: 24px;
     width: 140px;
 }
-
 
 .img-link {
     display: flex;
@@ -198,6 +240,12 @@ main h3 {
     border: 1px black;
     padding: 10px;
     font-size: 16px;
+    transition: transform 0.3s ease;
+}
+
+.img-link a:hover {
+    transform: scale(1.08);
+    background-color: #6f2e1c;
 }
 
 .img-link img {
@@ -206,19 +254,21 @@ main h3 {
     width: 30px;
 }
 
+/* =========================================
+   Section réduction
+========================================= */
 .reduc {
     background-image: url(asset/reduc.svg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     height: 379px;
-    width: auto;
-    margin-top: 20px;
-    margin-bottom: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .reduc h5 {
@@ -250,16 +300,24 @@ main h3 {
     border-radius: 10px;
     padding: 20px 35px;
     margin-bottom: 30px;
+    transition: transform 0.3s ease;
 }
 
+.reduc a:hover {
+    transform: scale(1.08);
+    background-color: #6f2e1c;
+}
+
+/* =========================================
+   Section Découverte
+========================================= */
 .discover {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-
-
+/* Filtres scrollables */
 .filter {
     display: flex;
     flex-direction: row;
@@ -317,8 +375,17 @@ main h3 {
 .pics img {
     margin-bottom: 20px;
     border-radius: 8px;
+    transition: all 1s ease;
 }
 
+.pics img:hover {
+    transform: scale(1.05);
+    rotate: 3deg;
+}
+
+/* =========================================
+   Section à propos
+========================================= */
 .about {
     background-image: url(asset/apropos.svg);
     background-size: cover;
@@ -363,8 +430,18 @@ main h3 {
     border-radius: 10px;
     padding: 20px 35px;
     margin-bottom: 30px;
+    transition: transform 0.3s ease;
 }
 
+.about a:hover {
+    transform: scale(1.08);
+    background-color: #6f2e1c;
+}
+
+
+/* =========================================
+   Section Petits Plaisirs
+========================================= */
 .pleasures {
     display: flex;
     flex-direction: column;
@@ -377,6 +454,15 @@ main h3 {
     font-family: "Sansita Swashed", system-ui;
     font-weight: 600;
     font-size: 24px;
+}
+
+.pleasure img {
+    border-radius: 8px; /* Coins arrondis */
+    transition: transform 1s ease; /* Animation hover */
+}
+
+.pleasure img:hover {
+    transform: scale(1.05); /* Zoom léger au survol */
 }
 
 .name {
@@ -404,6 +490,9 @@ main h3 {
     margin: 0;
 }
 
+/* =========================================
+   Footer
+========================================= */
 footer {
     background-image: url(asset/footer.svg);
     height: 1129px;
@@ -533,10 +622,15 @@ footer h4{
     color: #737373;
 }
 
+/* =========================================
+   Media Queries : responsive
+========================================= */
+
+/* Tablettes et écrans moyens */
 @media (min-width: 600px) {
     .bandeau {
         background-color: transparent;
-        position: absolute;
+        position: absolute; /* Bandeau flottant */
     }
 
     .bandeau img {
@@ -545,11 +639,11 @@ footer h4{
     }
     
     .burger {
-        display: none;
+        display: none; /* Pas de burger sur tablette */
     }
 
     .menu {
-        position: static;
+        position: static; /* Menu horizontal */
         opacity: 1;
         flex-direction: row;
         justify-content: flex-end;
@@ -573,7 +667,7 @@ footer h4{
         margin: 0px;
     }
 
-    ds {
+    .ds {
         height: 325px;
     }
 
@@ -623,6 +717,7 @@ footer h4{
     }
 }
 
+/* Ordinateurs moyens (768px et +) */
 @media (min-width: 768px) {
     .bandeau {
         height: 80px;
@@ -658,6 +753,7 @@ footer h4{
         margin-bottom: 30px;
     }
 
+    /* Grid pour produits */
     .products {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -670,17 +766,18 @@ footer h4{
     }
 
     .products .product {
-    margin-top: 0;
+        margin-top: 0;
     }
 
     .product {
-    margin: 0;
+        margin: 0;
     }
 
     .filter p:first-child{
         margin-left: 25%;
     }
 
+    /* Grid pour images découverte */
     .pictures {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -704,6 +801,47 @@ footer h4{
     }
 }
 
+/* Grand écran (1024px et +) */
+@media (min-width: 1024px) {
+    footer {
+        height: 530px;
+    }
+
+    .logo-media {
+        flex-direction: row;
+        gap: 500px;
+        margin-top: 20px;
+    }
+
+    .rest {
+        flex-direction: row;
+        align-items: stretch;
+        gap: 100px;
+        margin: 10px;
+    }
+
+    .contact {
+        flex-direction: column;
+    }
+
+    .explore {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+    }
+
+    .contact {
+        align-items: start;
+        padding: 0px;
+    }
+
+    .legal {
+        width: 1000px;
+        text-align: center;
+    }
+}
+
+/* Très grand écran (1200px et +) */
 @media (min-width: 1200px) {
     .bandeau {
         height: 125px;
@@ -808,46 +946,17 @@ footer h4{
         margin: 0px;
     }
 
-    footer {
-        height: 530px;
-    }
-
     .logo-media {
-        flex-direction: row;
         gap: 700px;
-        margin-top: 20px;
     }
 
     .rest {
-        flex-direction: row;
-        align-items: stretch;
         gap: 200px;
-        margin: 10px;
-    }
-
-    .contact {
-        flex-direction: column;
-    }
-
-    .explore {
-        display: flex;
-        flex-direction: column;
-        align-items: start;
-    }
-
-    .contact {
-        align-items: start;
-        padding: 0px;
-    }
-
-    .legal {
-        width: 1000px;
-        text-align: center;
     }
 }
 
+/* Ultra grand écran (1400px et +) */
 @media (min-width: 1400px) {
-
     .ds a {
         font-size: 35px;
     }
@@ -887,10 +996,6 @@ footer h4{
     .pics {
         height: 360px;
         width: 368px;
-    }
-
-    .pictures {
-        max-width: 1144px;
     }
 
     .pictures img {
